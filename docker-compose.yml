@@ -1,0 +1,43 @@
+# ==============================================================================
+#  业余无线电 A/B/C 类练题站 · Docker Compose
+#
+#  用法：
+#     cp .env.example .env      # 先改掉里面的默认密码
+#     docker compose up -d --build
+#     浏览器打开 http://<主机IP>:8080/
+#
+#  数据（SQLite 库 + secret key）持久化在 ./appdata，删容器不丢数据。
+# ==============================================================================
+services:
+  ham-exam:
+    build:
+      context: .
+      # 国内网络拉不到基础镜像时，在 .env 里设 BASE_IMAGE 为加速源地址
+      args:
+        BASE_IMAGE: "${BASE_IMAGE:-python:3.12-slim}"
+    image: ham-exam-site:latest
+    container_name: ham-exam
+    restart: unless-stopped
+    ports:
+      - "${HAM_PORT:-8080}:8080"
+    environment:
+      HAM_ADMIN_USER: "${HAM_ADMIN_USER:-admin}"
+      HAM_ADMIN_PASS: "${HAM_ADMIN_PASS:-admin}"
+      HAM_REGISTER_CODE: "${HAM_REGISTER_CODE:-业余无线电}"
+      HAM_DB_PATH: "/data/ham.db"
+      HAM_WEB_DIR: "/app/web"
+      TZ: "${TZ:-Asia/Shanghai}"
+    volumes:
+      # 命名卷与本地目录二选一。本地目录便于在 NAS 上直接备份：
+      #   ./appdata   -> 宿主机可见的目录（默认）
+      - ./appdata:/data
+      # - ham-exam-data:/data      # 改用命名卷时取消本行注释并注释上一行
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8080/api/me',timeout=4).status==200 else 1)"]
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3
+
+# volumes:
+#   ham-exam-data:

@@ -1,0 +1,28 @@
+# 镜像只需要 backend/ 与 web/（web 已含构建好的 exam.js 与题图）
+.git
+.gitignore
+.dockerignore
+.github
+
+# 运行时数据
+appdata
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+.secret_key
+.env
+
+# 构建源码与部署脚本：运行时不需要，排除以缩小构建上下文
+data
+scripts
+deploy
+
+# 文档
+*.md
+
+# Python
+**/__pycache__
+**/*.pyc
+.venv
+venv

@@ -1,0 +1,28 @@
+# ---- 运行时数据与密钥（切勿提交）----
+appdata/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+.secret_key
+secret.key
+.env
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# ---- 构建与打包产物 ----
+*.tar.gz
+*.zip
+
+# ---- 编辑器 / 系统 ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

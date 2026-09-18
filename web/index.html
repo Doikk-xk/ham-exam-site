@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<title>业余无线电 A/B/C 类 · 练题站</title>
+<meta name="viewport" content="width=1200">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">B</div>
+      <div class="brand-txt">
+        <b>HAM 业余无线电练题站</b>
+        <span id="brand-sub">2025 年版官方题库</span>
+      </div>
+    </div>
+    <div class="class-switch" id="class-switch"></div>
+    <div class="nav-group-title">训练</div>
+    <a class="nav-item" href="#/home"><span class="ico">▤</span>仪表盘</a>
+    <a class="nav-item" href="#/practice"><span class="ico">✎</span>顺序 / 随机练习</a>
+    <a class="nav-item" href="#/chapter"><span class="ico">☰</span>章节专项</a>
+    <a class="nav-item" href="#/exam"><span class="ico">◷</span>模拟考试</a>
+    <div class="nav-group-title">复习</div>
+    <a class="nav-item" href="#/wrong"><span class="ico">✗</span>错题本<span class="badge" id="nav-wrong">0</span></a>
+    <a class="nav-item" href="#/fav"><span class="ico">★</span>收藏<span class="badge" id="nav-fav">0</span></a>
+    <a class="nav-item" href="#/browse"><span class="ico">⌕</span>题库检索</a>
+    <div class="nav-group-title">其他</div>
+    <a class="nav-item" href="#/stats"><span class="ico">◔</span>学习统计</a>
+    <a class="nav-item" href="#/plan"><span class="ico">⛳</span>备考规划</a>
+    <a class="nav-item" href="#/settings"><span class="ico">⚙</span>设置</a>
+    <div class="nav-group-title">账号</div>
+    <div class="auth-box" id="auth-box"></div>
+    <div class="sidebar-foot">
+      <button class="btn ghost sm" id="theme-btn" style="width:100%">切换深色模式</button>
+      <div class="small muted" style="margin-top:10px;line-height:1.6" id="foot-note"></div>
+    </div>
+  </aside>
+  <main class="main" id="main"></main>
+</div>
+
+<div class="toast" id="toast"></div>
+<div id="modal-root"></div>
+
+<script src="data/exam.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
