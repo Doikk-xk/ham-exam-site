@@ -33,7 +33,7 @@
 ### 方式一：Docker Compose（推荐）
 
 ```bash
-git clone https://github.com/<your-name>/ham-exam-site.git
+git clone https://github.com/Doikk-xk/ham-exam-site.git
 cd ham-exam-site
 
 cp .env.example .env        # 改掉里面的默认管理员密码
